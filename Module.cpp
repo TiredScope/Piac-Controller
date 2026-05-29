@@ -29,7 +29,7 @@ void ModuleRegistry::handleMessage(Message m) {
 
   for (Module *module : modules) {
     if (!module || !module->isEnabled()) continue;
-    if(m.getDiscriminator() != DEFAULT_DISCRIMINATOR && module->getDiscriminator() != m.getDiscriminator()) continue;
+    if (m.getDiscriminator() != DEFAULT_DISCRIMINATOR && module->getDiscriminator() != m.getDiscriminator()) continue;
     module->onMessage(m);
   }
 }
@@ -71,6 +71,7 @@ void ModuleRegistry::sendCapabilities() {
     if (!module) continue;
     MessageBuilder::putString(module->getId());
     MessageBuilder::putU8(module->getDiscriminator());
+    MessageBuilder::putU8(module->isEnabled() ? 1 : 0);
   }
 
   MiniCom::send(MessageBuilder::build());

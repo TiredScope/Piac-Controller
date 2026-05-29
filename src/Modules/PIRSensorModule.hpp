@@ -5,7 +5,7 @@
 #include "../../Module.hpp"
 #include "../../Common.hpp"
 
-#define PIRSENSOR_SEND_DELAY 20
+#define PIRSENSOR_SEND_DELAY 1000
 
 class PIRSensorModule : public Module {
 private:
