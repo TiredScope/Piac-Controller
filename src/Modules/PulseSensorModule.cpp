@@ -1,6 +1,5 @@
 #include "Arduino.h"
 #include "PulseSensorModule.hpp"
-#include "MiniCom.hpp"
 
 void PulseSensorModule::begin() {
   pulseSensor.analogInput(sPin);

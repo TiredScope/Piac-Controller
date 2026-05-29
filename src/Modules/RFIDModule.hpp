@@ -2,8 +2,8 @@
 #define _RFIDMODULE_H_
 
 #include "Arduino.h"
-#include "Module.hpp"
-#include "Common.hpp"
+#include "../../Module.hpp"
+#include "../../Common.hpp"
 
 #include <MFRC522.h>
 

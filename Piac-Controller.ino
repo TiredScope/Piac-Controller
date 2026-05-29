@@ -1,12 +1,14 @@
 #include "Arduino.h"
 #include "Module.hpp"
 #include "Common.hpp"
-#include "LCDModule.hpp"
-#include "JoystickModule.hpp"
-#include "LEDMatrixModule.hpp"
-#include "NunchukModule.hpp"
-#include "RFIDModule.hpp"
-#include <SPI.h>
+
+//#include "src/Modules/LCDModule.hpp"
+//#include "src/Modules/JoystickModule.hpp"
+//#include "src/Modules/LEDMatrixModule.hpp"
+//#include "src/Modules/NunchukModule.hpp"
+//#include "src/Modules/RFIDModule.hpp"
+//#include <SPI.h>
+#include "src/Modules/PulseSensorModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -17,16 +19,19 @@ LEDMatrixModule ledMatrix(dInPin, clkPin, csPin);
 
 NunchukModule nunchuk;*/
 
-static const pin_t ssPin = 53, rstPin = 5;
-RFIDModule rfid(ssPin, rstPin);
+//static const pin_t ssPin = 53, rstPin = 5;
+//RFIDModule rfid(ssPin, rstPin);
+
+static const pin_t hearbeatPin = A0;
+PulseSensorModule pulseSensor(hearbeatPin, 550 /* threshold */);
 
 void setup() {
   MiniCom::begin(115200);
   MiniCom::debug = true;
-  SPI.begin();
+  //SPI.begin();
 
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
+  //pinMode(LED_BUILTIN, OUTPUT);
+  //digitalWrite(LED_BUILTIN, LOW);
 
   /*pinMode(rs, OUTPUT);
   pinMode(en, OUTPUT);
@@ -37,11 +42,11 @@ void setup() {
 
   //ModuleRegistry::add(&lcd);
   //ModuleRegistry::add(&joystick);
-  //joystick.setEnabled(false);
   //ModuleRegistry::add(&ledMatrix);
   //ModuleRegistry::add(&nunchuk);
-  rfid.setDiscriminator(42);
-  ModuleRegistry::add(&rfid);
+  //rfid.setDiscriminator(42);
+  //ModuleRegistry::add(&rfid);
+  ModuleRegistry::add(&pulseSensor);
 
   ModuleRegistry::begin();
 

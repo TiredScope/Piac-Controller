@@ -2,8 +2,8 @@
 #define _JOYSTICKMODULE_H_
 
 #include "Arduino.h"
-#include "Module.hpp"
-#include "Common.hpp"
+#include "../../Module.hpp"
+#include "../../Common.hpp"
 
 #ifndef JOYSTICK_SEND_DELAY
 #define JOYSTICK_SEND_DELAY 20

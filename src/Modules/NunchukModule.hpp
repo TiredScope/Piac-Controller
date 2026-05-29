@@ -2,8 +2,8 @@
 #define _NUNCHUKMODULE_H_
 
 #include "Arduino.h"
-#include "Module.hpp"
-#include "Common.hpp"
+#include "../../Module.hpp"
+#include "../../Common.hpp"
 #include <WiiChuck.h>
 #include <Nunchuck.h>
 

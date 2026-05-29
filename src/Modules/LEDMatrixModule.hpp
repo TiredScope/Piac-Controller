@@ -2,9 +2,9 @@
 #define _LEDMATRIXMODULE_H_
 
 #include "Arduino.h"
-#include "Module.hpp"
-#include "Common.hpp"
-#include "LedControl.h"
+#include "../../Module.hpp"
+#include "../../Common.hpp"
+#include <LedControl.h>
 
 #define LEDMATRIX_RESOLUTION_X 8
 #define LEDMATRIX_RESOLUTION_Y 8

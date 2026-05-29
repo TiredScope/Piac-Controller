@@ -3,8 +3,8 @@
 #define _LCDMODULE_H_
 
 #include "Arduino.h"
-#include "Module.hpp"
-#include "Common.hpp"
+#include "../../Module.hpp"
+#include "../../Common.hpp"
 
 // LCD config flags
 #define LCD_CURSOR 0x01

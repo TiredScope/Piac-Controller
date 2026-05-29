@@ -2,8 +2,8 @@
 #define _PULSESENSORMODULE_H_
 
 #include "Arduino.h"
-#include "Module.hpp"
-#include "Common.hpp"
+#include "../../Module.hpp"
+#include "../../Common.hpp"
 #include "PulseSensorPlayground.h"
 
 class PulseSensorModule : public Module {
