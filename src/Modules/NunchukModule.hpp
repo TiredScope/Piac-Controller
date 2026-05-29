@@ -7,16 +7,14 @@
 #include <WiiChuck.h>
 #include <Nunchuck.h>
 
-#ifndef NUNCHUK_SEND_DELAY
 #define NUNCHUK_SEND_DELAY 20
-#endif
 
 class NunchukModule : public Module {
 private:
   Accessory nunchuk;
   unsigned long lastSent;
 public:
-  NunchukModule() {};
+  NunchukModule(TwoWire& wire=Wire): nunchuk(wire) {};
 
   virtual const char *getId() const override {
     return "nunchuk";

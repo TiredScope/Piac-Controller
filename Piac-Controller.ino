@@ -6,8 +6,7 @@
 //#include "src/Modules/JoystickModule.hpp"
 //#include "src/Modules/LEDMatrixModule.hpp"
 //#include "src/Modules/NunchukModule.hpp"
-//#include "src/Modules/RFIDModule.hpp"
-//#include <SPI.h>
+#include "src/Modules/RFIDModule.hpp"
 #include "src/Modules/PulseSensorModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
@@ -19,8 +18,8 @@ LEDMatrixModule ledMatrix(dInPin, clkPin, csPin);
 
 NunchukModule nunchuk;*/
 
-//static const pin_t ssPin = 53, rstPin = 5;
-//RFIDModule rfid(ssPin, rstPin);
+static const pin_t ssPin = 53, rstPin = 5;
+RFIDModule rfid(ssPin, rstPin);
 
 static const pin_t hearbeatPin = A0;
 PulseSensorModule pulseSensor(hearbeatPin, 550 /* threshold */);
@@ -28,17 +27,6 @@ PulseSensorModule pulseSensor(hearbeatPin, 550 /* threshold */);
 void setup() {
   MiniCom::begin(115200);
   MiniCom::debug = true;
-  //SPI.begin();
-
-  //pinMode(LED_BUILTIN, OUTPUT);
-  //digitalWrite(LED_BUILTIN, LOW);
-
-  /*pinMode(rs, OUTPUT);
-  pinMode(en, OUTPUT);
-  pinMode(d4, OUTPUT);
-  pinMode(d5, OUTPUT);
-  pinMode(d6, OUTPUT);
-  pinMode(d7, OUTPUT);*/
 
   //ModuleRegistry::add(&lcd);
   //ModuleRegistry::add(&joystick);

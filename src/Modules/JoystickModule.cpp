@@ -2,6 +2,7 @@
 #include "JoystickModule.hpp"
 
 void JoystickModule::begin() {
+  pinMode(swPin, INPUT);
 }
 
 void JoystickModule::update() {

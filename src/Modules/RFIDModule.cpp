@@ -2,6 +2,7 @@
 
 void RFIDModule::begin() {
   // RFID initialization
+  spi.begin();
   mfrc522.PCD_Init();
   mfrc522.PCD_SetAntennaGain(mfrc522.RxGain_max);
   cardRead = false;

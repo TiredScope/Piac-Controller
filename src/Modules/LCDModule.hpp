@@ -1,8 +1,8 @@
-#include "LiquidCrystal.h"
 #ifndef _LCDMODULE_H_
 #define _LCDMODULE_H_
 
-#include "Arduino.h"
+#include <LiquidCrystal.h>
+#include <Arduino.h>
 #include "../../Module.hpp"
 #include "../../Common.hpp"
 

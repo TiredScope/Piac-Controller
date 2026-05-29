@@ -5,9 +5,7 @@
 #include "../../Module.hpp"
 #include "../../Common.hpp"
 
-#ifndef JOYSTICK_SEND_DELAY
 #define JOYSTICK_SEND_DELAY 20
-#endif
 
 class JoystickModule : public Module {
 private:
