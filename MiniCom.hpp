@@ -55,6 +55,9 @@ enum class MessageType : uint16_t {
 
   // PIRSensorModule
   M_PIRSENSOR_PRESENCE = 0x0700,
+
+  // UltrasonicSensorModule
+  M_ULTRASONICSENSOR_DISTANCE = 0x0800,
 };
 
 class Message;
