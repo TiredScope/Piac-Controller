@@ -11,7 +11,8 @@
 //#include "src/Modules/PIRSensorModule.hpp"
 //#include "src/Modules/UltrasonicSensorModule.hpp"
 //#include "src/Modules/LightSensorModule.hpp"
-#include "src/Modules/IRReceiverModule.hpp"
+//#include "src/Modules/IRReceiverModule.hpp"
+#include "src/Modules/ThermistorModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -37,8 +38,11 @@ NunchukModule nunchuk;*/
 //static const pin_t lightSensorPin = A0;
 //LightSensorModule lightSensor(lightSensorPin);
 
-static const pin_t irRecvPin = 11;
-IRReceiverModule irReceiver(irRecvPin);
+//static const pin_t irRecvPin = 11;
+//IRReceiverModule irReceiver(irRecvPin);
+
+static const pin_t thermistorPin = A0;
+ThermistorModule thermistor(thermistorPin);
 
 void setup() {
   MiniCom::begin(115200);
@@ -48,13 +52,13 @@ void setup() {
   //ModuleRegistry::add(&joystick);
   //ModuleRegistry::add(&ledMatrix);
   //ModuleRegistry::add(&nunchuk);
-  //rfid.setDiscriminator(42);
   //ModuleRegistry::add(&rfid);
   //ModuleRegistry::add(&pulseSensor);
   //ModuleRegistry::add(&pirSensor);
   //ModuleRegistry::add(&ultrasonicSensor);
   //ModuleRegistry::add(&lightSensor);
-  ModuleRegistry::add(&irReceiver);
+  //ModuleRegistry::add(&irReceiver);
+  ModuleRegistry::add(&thermistor);
 
   ModuleRegistry::begin();
 

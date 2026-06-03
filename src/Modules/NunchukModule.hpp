@@ -14,9 +14,10 @@ private:
   Accessory nunchuk;
   unsigned long lastSent;
 public:
-  NunchukModule(TwoWire& wire=Wire): nunchuk(wire) {};
+  NunchukModule(TwoWire& wire = Wire, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), nunchuk(wire){};
 
-  virtual const char *getId() const override {
+  virtual const char* getId() const override {
     return "nunchuk";
   }
 

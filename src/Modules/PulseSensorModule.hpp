@@ -12,8 +12,8 @@ private:
   int threshold;
   PulseSensorPlayground pulseSensor;
 public:
-  PulseSensorModule(pin_t sPin, int threshold)
-    : sPin(sPin), threshold(threshold){};
+  PulseSensorModule(pin_t sPin, int threshold, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), sPin(sPin), threshold(threshold){};
 
   virtual const char *getId() const override {
     return "pulse_sensor";

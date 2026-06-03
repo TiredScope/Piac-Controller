@@ -4,7 +4,6 @@
 #include "Arduino.h"
 #include "../../Module.hpp"
 #include "../../Common.hpp"
-#include "../HC-SR04/SR04.h"
 
 #define LIGHTSENSOR_SEND_DELAY 100
 
@@ -13,7 +12,8 @@ private:
   pin_t sPin;
   unsigned long lastSent;
 public:
-  LightSensorModule(pin_t sPin){};
+  LightSensorModule(pin_t sPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), sPin(sPin){};
 
   virtual const char *getId() const override {
     return "light_sensor";

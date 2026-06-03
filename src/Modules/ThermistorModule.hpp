@@ -1,22 +1,22 @@
-#ifndef _PIRSENSORMODULE_H_
-#define _PIRSENSORMODULE_H_
+#ifndef _THERMISTORMODULE_H_
+#define _THERMISTORMODULE_H_
 
 #include "Arduino.h"
 #include "../../Module.hpp"
 #include "../../Common.hpp"
 
-#define PIRSENSOR_SEND_DELAY 1000
+#define THERMISTOR_SEND_DELAY 100
 
-class PIRSensorModule : public Module {
+class ThermistorModule : public Module {
 private:
   pin_t sPin;
   unsigned long lastSent;
 public:
-  PIRSensorModule(pin_t sPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+  ThermistorModule(pin_t sPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
     : Module(discriminator), sPin(sPin){};
 
   virtual const char *getId() const override {
-    return "pir_sensor";
+    return "thermistor";
   }
 
   virtual void begin() override;

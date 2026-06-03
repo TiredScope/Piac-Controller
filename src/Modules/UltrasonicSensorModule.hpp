@@ -13,8 +13,8 @@ private:
   SR04 sr04;
   unsigned long lastSent;
 public:
-  UltrasonicSensorModule(pin_t echoPin, pin_t trigPin)
-    : sr04(echoPin, trigPin){};
+  UltrasonicSensorModule(pin_t echoPin, pin_t trigPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), sr04(echoPin, trigPin){};
 
   virtual const char *getId() const override {
     return "ultrasonic_sensor";

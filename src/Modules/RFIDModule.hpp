@@ -16,8 +16,8 @@ private:
   bool cardRead;
   bool enabled;
 public:
-  RFIDModule(pin_t ssPin, pin_t rstPin, SPIClass &spi = SPI)
-    : spi(spi), mfrc522(ssPin, rstPin){};
+  RFIDModule(pin_t ssPin, pin_t rstPin, SPIClass &spi = SPI, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), spi(spi), mfrc522(ssPin, rstPin){};
 
   virtual const char *getId() const override {
     return "rfid";

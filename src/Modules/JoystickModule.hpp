@@ -12,8 +12,8 @@ private:
   pin_t xPin, yPin, swPin;
   unsigned long lastSent;
 public:
-  JoystickModule(pin_t xPin, pin_t yPin, pin_t swPin)
-    : xPin(xPin), yPin(yPin), swPin(swPin){};
+  JoystickModule(pin_t xPin, pin_t yPin, pin_t swPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), xPin(xPin), yPin(yPin), swPin(swPin){};
 
   virtual const char *getId() const override {
     return "joystick";

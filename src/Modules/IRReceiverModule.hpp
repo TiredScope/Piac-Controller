@@ -9,8 +9,8 @@ class IRReceiverModule : public Module {
 private:
   pin_t recvPin;
 public:
-  IRReceiverModule(pin_t recvPin)
-    : recvPin(recvPin){};
+  IRReceiverModule(pin_t recvPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), recvPin(recvPin){};
 
   virtual const char *getId() const override {
     return "ir_receiver";

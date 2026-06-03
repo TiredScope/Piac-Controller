@@ -13,8 +13,8 @@ class LEDMatrixModule : public Module {
 private:
   LedControl control;
 public:
-  LEDMatrixModule(pin_t dInPin, pin_t clkPin, pin_t csPin)
-    : control(dInPin, clkPin, csPin){};
+  LEDMatrixModule(pin_t dInPin, pin_t clkPin, pin_t csPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), control(dInPin, clkPin, csPin){};
 
   virtual const char *getId() const override {
     return "led_matrix";
