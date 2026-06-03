@@ -58,6 +58,9 @@ enum class MessageType : uint16_t {
 
   // UltrasonicSensorModule
   M_ULTRASONICSENSOR_DISTANCE = 0x0800,
+
+  // LightSensorModule
+  M_LIGHTSENSOR_VALUE = 0x0900,
 };
 
 class Message;
