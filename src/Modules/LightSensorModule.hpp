@@ -1,5 +1,5 @@
-#ifndef _PULSESENSORMODULE_H_
-#define _PULSESENSORMODULE_H_
+#ifndef _LIGHTSENSORMODULE_H_
+#define _LIGHTSENSORMODULE_H_
 
 #include "Arduino.h"
 #include "../../Module.hpp"

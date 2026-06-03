@@ -183,7 +183,7 @@ void MiniCom::parseMessage(const uint8_t *bytes, size_t length) {
 
   if (checksum != calculatedChecksum) {
     // TODO: handle invalid messages on the protocol level?
-    MiniCom::debugPrint("Message checksum failure");
+    MiniCom::debugPrint("[MiniCom] Message checksum failure");
     return;
   }
 

@@ -10,7 +10,8 @@
 //#include "src/Modules/PulseSensorModule.hpp"
 //#include "src/Modules/PIRSensorModule.hpp"
 //#include "src/Modules/UltrasonicSensorModule.hpp"
-#include "src/Modules/LightSensorModule.hpp"
+//#include "src/Modules/LightSensorModule.hpp"
+#include "src/Modules/IRReceiverModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -33,8 +34,11 @@ NunchukModule nunchuk;*/
 //static const pin_t echoPin = 11, trigPin = 12;
 //UltrasonicSensorModule ultrasonicSensor(echoPin, trigPin);
 
-static const pin_t lightSensorPin = A0;
-LightSensorModule lightSensor(lightSensorPin);
+//static const pin_t lightSensorPin = A0;
+//LightSensorModule lightSensor(lightSensorPin);
+
+static const pin_t irRecvPin = 11;
+IRReceiverModule irReceiver(irRecvPin);
 
 void setup() {
   MiniCom::begin(115200);
@@ -49,7 +53,8 @@ void setup() {
   //ModuleRegistry::add(&pulseSensor);
   //ModuleRegistry::add(&pirSensor);
   //ModuleRegistry::add(&ultrasonicSensor);
-  ModuleRegistry::add(&lightSensor);
+  //ModuleRegistry::add(&lightSensor);
+  ModuleRegistry::add(&irReceiver);
 
   ModuleRegistry::begin();
 

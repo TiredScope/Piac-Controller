@@ -17,14 +17,14 @@ void RFIDModule::update() {
 
   if (cardRead) {
     // Card was just read previously, ignore
-    MiniCom::debugPrint("Card read already");
+    MiniCom::debugPrint("[RFID] Card read already");
     return;
   }
 
   if (!mfrc522.PICC_ReadCardSerial()) {
     // Read failed
     MiniCom::send(Message(MessageType::M_RFID_SCAN_FAILED, getDiscriminator(), nullptr, 0));
-    MiniCom::debugPrint("Scan failed");
+    MiniCom::debugPrint("[RFID] Scan failed");
     return;
   }
 

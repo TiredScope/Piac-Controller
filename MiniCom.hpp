@@ -61,6 +61,9 @@ enum class MessageType : uint16_t {
 
   // LightSensorModule
   M_LIGHTSENSOR_VALUE = 0x0900,
+
+  // IRReceiverModule
+  M_IRRECEIVER_DATA = 0x0A00,
 };
 
 class Message;

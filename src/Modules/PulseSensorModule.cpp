@@ -5,7 +5,7 @@ void PulseSensorModule::begin() {
   pulseSensor.analogInput(sPin);
   pulseSensor.setThreshold(threshold);
   if (!pulseSensor.begin()) {
-    MiniCom::debugPrint("Failed to initialize pulse sensor");
+    MiniCom::debugPrint("[PulseSensor] Failed to initialize pulse sensor");
   }
 }
 

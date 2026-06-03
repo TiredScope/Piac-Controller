@@ -1,22 +1,19 @@
-#ifndef _PIRSENSORMODULE_H_
-#define _PIRSENSORMODULE_H_
+#ifndef _IRRECEIVERMODULE_H_
+#define _IRRECEIVERMODULE_H_
 
 #include "Arduino.h"
 #include "../../Module.hpp"
 #include "../../Common.hpp"
 
-#define PIRSENSOR_SEND_DELAY 1000
-
-class PIRSensorModule : public Module {
+class IRReceiverModule : public Module {
 private:
-  pin_t sPin;
-  unsigned long lastSent;
+  pin_t recvPin;
 public:
-  PIRSensorModule(pin_t sPin)
-    : sPin(sPin){};
+  IRReceiverModule(pin_t recvPin)
+    : recvPin(recvPin){};
 
   virtual const char *getId() const override {
-    return "pir_sensor";
+    return "ir_receiver";
   }
 
   virtual void begin() override;
