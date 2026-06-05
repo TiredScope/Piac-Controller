@@ -2,8 +2,8 @@
 #define _ULTRASONICSENSORMODULE_H_
 
 #include "Arduino.h"
-#include "../../Module.hpp"
-#include "../../Common.hpp"
+#include "../Module.hpp"
+#include "../Common.hpp"
 #include "../HC-SR04/SR04.h"
 
 #define ULTRASONICSENSOR_SEND_DELAY 100
@@ -24,5 +24,9 @@ public:
   virtual void update() override;
   virtual void onMessage(Message m) override;
 };
+
+#ifdef INCLUDE_IMPLEMENTATION
+#include "UltrasonicSensorModule.cpp"
+#endif
 
 #endif

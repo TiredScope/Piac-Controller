@@ -2,8 +2,8 @@
 #define _LIGHTSENSORMODULE_H_
 
 #include "Arduino.h"
-#include "../../Module.hpp"
-#include "../../Common.hpp"
+#include "../Module.hpp"
+#include "../Common.hpp"
 
 #define LIGHTSENSOR_SEND_DELAY 100
 
@@ -23,5 +23,9 @@ public:
   virtual void update() override;
   virtual void onMessage(Message m) override;
 };
+
+#ifdef INCLUDE_IMPLEMENTATION
+#include "LightSensorModule.cpp"
+#endif
 
 #endif

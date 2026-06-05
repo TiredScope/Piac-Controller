@@ -2,8 +2,8 @@
 #define _PIRSENSORMODULE_H_
 
 #include "Arduino.h"
-#include "../../Module.hpp"
-#include "../../Common.hpp"
+#include "../Module.hpp"
+#include "../Common.hpp"
 
 #define PIRSENSOR_SEND_DELAY 1000
 
@@ -23,5 +23,9 @@ public:
   virtual void update() override;
   virtual void onMessage(Message m) override;
 };
+
+#ifdef INCLUDE_IMPLEMENTATION
+#include "PIRSensorModule.cpp"
+#endif
 
 #endif

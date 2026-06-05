@@ -6,8 +6,8 @@
 #include <MFRC522.h>
 #include <SPI.h>
 
-#include "../../Module.hpp"
-#include "../../Common.hpp"
+#include "../Module.hpp"
+#include "../Common.hpp"
 
 class RFIDModule : public Module {
 private:
@@ -27,5 +27,9 @@ public:
   virtual void update() override;
   virtual void onMessage(Message m) override;
 };
+
+#ifdef INCLUDE_IMPLEMENTATION
+#include "RFIDModule.cpp"
+#endif
 
 #endif

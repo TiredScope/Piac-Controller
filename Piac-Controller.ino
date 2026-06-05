@@ -2,17 +2,19 @@
 #include "Module.hpp"
 #include "Common.hpp"
 
-//#include "src/Modules/LCDModule.hpp"
-//#include "src/Modules/JoystickModule.hpp"
-//#include "src/Modules/LEDMatrixModule.hpp"
-//#include "src/Modules/NunchukModule.hpp"
-//#include "src/Modules/RFIDModule.hpp"
-//#include "src/Modules/PulseSensorModule.hpp"
-//#include "src/Modules/PIRSensorModule.hpp"
-//#include "src/Modules/UltrasonicSensorModule.hpp"
-//#include "src/Modules/LightSensorModule.hpp"
-//#include "src/Modules/IRReceiverModule.hpp"
-#include "src/Modules/ThermistorModule.hpp"
+#define INCLUDE_IMPLEMENTATION  // Because the modules are (effectively) header-only libraries: The .cpp file is included when the define is present
+//#include "Modules/LCDModule.hpp"
+//#include "Modules/JoystickModule.hpp"
+//#include "Modules/LEDMatrixModule.hpp"
+//#include "Modules/NunchukModule.hpp"
+//#include "Modules/RFIDModule.hpp"
+//#include "Modules/PulseSensorModule.hpp"
+//#include "Modules/PIRSensorModule.hpp"
+//#include "Modules/UltrasonicSensorModule.hpp"
+//#include "Modules/LightSensorModule.hpp"
+//#include "Modules/IRReceiverModule.hpp"
+//#include "Modules/ThermistorModule.hpp"
+#include "Modules/CircuitPlaygroundModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -41,11 +43,13 @@ NunchukModule nunchuk;*/
 //static const pin_t irRecvPin = 11;
 //IRReceiverModule irReceiver(irRecvPin);
 
-static const pin_t thermistorPin = A0;
-ThermistorModule thermistor(thermistorPin);
+//static const pin_t thermistorPin = A0;
+//ThermistorModule thermistor(thermistorPin);
+
+CircuitPlaygroundModule circuitPlayground;
 
 void setup() {
-  MiniCom::begin(115200);
+  MiniCom::begin(9600);
   MiniCom::debug = true;
 
   //ModuleRegistry::add(&lcd);
@@ -58,7 +62,8 @@ void setup() {
   //ModuleRegistry::add(&ultrasonicSensor);
   //ModuleRegistry::add(&lightSensor);
   //ModuleRegistry::add(&irReceiver);
-  ModuleRegistry::add(&thermistor);
+  //ModuleRegistry::add(&thermistor);
+  ModuleRegistry::add(&circuitPlayground);
 
   ModuleRegistry::begin();
 

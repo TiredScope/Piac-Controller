@@ -2,8 +2,8 @@
 #define _IRRECEIVERMODULE_H_
 
 #include "Arduino.h"
-#include "../../Module.hpp"
-#include "../../Common.hpp"
+#include "../Module.hpp"
+#include "../Common.hpp"
 
 class IRReceiverModule : public Module {
 private:
@@ -20,5 +20,9 @@ public:
   virtual void update() override;
   virtual void onMessage(Message m) override;
 };
+
+#ifdef INCLUDE_IMPLEMENTATION
+#include "IRReceiverModule.cpp"
+#endif
 
 #endif

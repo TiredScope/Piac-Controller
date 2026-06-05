@@ -2,8 +2,8 @@
 #define _NUNCHUKMODULE_H_
 
 #include "Arduino.h"
-#include "../../Module.hpp"
-#include "../../Common.hpp"
+#include "../Module.hpp"
+#include "../Common.hpp"
 #include <WiiChuck.h>
 #include <Nunchuck.h>
 
@@ -25,5 +25,9 @@ public:
   virtual void update() override;
   virtual void onMessage(Message m) override;
 };
+
+#ifdef INCLUDE_IMPLEMENTATION
+#include "NunchukModule.cpp"
+#endif
 
 #endif

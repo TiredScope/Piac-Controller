@@ -3,8 +3,8 @@
 
 #include <LiquidCrystal.h>
 #include <Arduino.h>
-#include "../../Module.hpp"
-#include "../../Common.hpp"
+#include "../Module.hpp"
+#include "../Common.hpp"
 
 // LCD config flags
 #define LCD_CURSOR 0x01
@@ -28,5 +28,9 @@ public:
   virtual void update() override;
   virtual void onMessage(Message m) override;
 };
+
+#ifdef INCLUDE_IMPLEMENTATION
+#include "LCDModule.cpp"
+#endif
 
 #endif
