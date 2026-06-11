@@ -7,22 +7,29 @@
 
 #define CIRCUITPLAYGROUND_DEFAULT_DELAY 1000
 
-#define CIRCUITPLAYGROUND_BUTTONS (1 << 0)
-#define CIRCUITPLAYGROUND_SLIDE_SWITCH (1 << 1)
-#define CIRCUITPLAYGROUND_CAPTOUCH (1 << 2)
-#define CIRCUITPLAYGROUND_ACCELEROMETER (1 << 3)
-#define CIRCUITPLAYGROUND_TEMPERATURE (1 << 4)
-#define CIRCUITPLAYGROUND_LIGHT (1 << 5)
-#define CIRCUITPLAYGROUND_SOUND (1 << 6)
+enum class CircuitPlaygroundComponent : uint8_t {
+  BUTTONS,
+  CAPACITIVE_TOUCH,
+  ACCELEROMETER,
+  TEMPERATURE,
+  LIGHT,
+  SOUND,
+
+  MAX_VALUE,
+};
+
+#define CIRCUITPLAYGROUND_COMPONENT_FLAG(component) (1 << (uint8_t)(component))
+
+const uint8_t CIRCUITPLAYGROUND_CAPACITIVE_TOUCH_PINS[8] = { 0, 1, 2, 3, 6, 9, 10, 12 };
 
 class CircuitPlaygroundModule : public Module {
 private:
-  uint8_t reportingMode = 0;  // 0 = all disabled
-  uint32_t capTouchDelay = CIRCUITPLAYGROUND_DEFAULT_DELAY;
-  uint32_t accelerometerDelay = CIRCUITPLAYGROUND_DEFAULT_DELAY;
-  uint32_t temperatureDelay = CIRCUITPLAYGROUND_DEFAULT_DELAY;
-  uint32_t lightDelay = CIRCUITPLAYGROUND_DEFAULT_DELAY;
-  uint32_t soundDelay = CIRCUITPLAYGROUND_DEFAULT_DELAY;
+  uint8_t reportingMode = 0;        // 0 = all disabled
+  uint8_t capacitiveTouchPins = 0;  // 0 = all disabled
+  uint32_t delays[(uint8_t)CircuitPlaygroundComponent::MAX_VALUE] = { 0 };
+  unsigned long lastSent[(uint8_t)CircuitPlaygroundComponent::MAX_VALUE] = { 0 };
+
+  bool needsToBeSent(CircuitPlaygroundComponent component);
 public:
   CircuitPlaygroundModule(uint8_t discriminator = DEFAULT_DISCRIMINATOR)
     : Module(discriminator){};

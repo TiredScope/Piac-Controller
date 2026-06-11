@@ -49,7 +49,7 @@ NunchukModule nunchuk;*/
 CircuitPlaygroundModule circuitPlayground;
 
 void setup() {
-  MiniCom::begin(9600);
+  MiniCom::begin(115200);
   MiniCom::debug = true;
 
   //ModuleRegistry::add(&lcd);
