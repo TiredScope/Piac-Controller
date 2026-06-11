@@ -81,6 +81,9 @@ enum class MessageType : uint16_t {
   M_CIRCUITPLAYGROUND_LIGHT = 0x0C09,
   M_CIRCUITPLAYGROUND_SOUND = 0x0C0A,
 
+  // DHT22Module
+  M_DHT22_SET_REPORTING_DELAY = 0x0D00,
+  M_DHT22_VALUES = 0x0D01,
 };
 
 class Message;

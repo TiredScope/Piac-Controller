@@ -14,7 +14,8 @@
 //#include "Modules/LightSensorModule.hpp"
 //#include "Modules/IRReceiverModule.hpp"
 //#include "Modules/ThermistorModule.hpp"
-#include "Modules/CircuitPlaygroundModule.hpp"
+//#include "Modules/CircuitPlaygroundModule.hpp"
+#include "Modules/DHT22Module.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -46,7 +47,9 @@ NunchukModule nunchuk;*/
 //static const pin_t thermistorPin = A0;
 //ThermistorModule thermistor(thermistorPin);
 
-CircuitPlaygroundModule circuitPlayground;
+//CircuitPlaygroundModule circuitPlayground;
+
+DHT22Module dht22(2);
 
 void setup() {
   MiniCom::begin(115200);
@@ -63,7 +66,8 @@ void setup() {
   //ModuleRegistry::add(&lightSensor);
   //ModuleRegistry::add(&irReceiver);
   //ModuleRegistry::add(&thermistor);
-  ModuleRegistry::add(&circuitPlayground);
+  //ModuleRegistry::add(&circuitPlayground);
+  ModuleRegistry::add(&dht22);
 
   ModuleRegistry::begin();
 
