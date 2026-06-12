@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "ThermistorModule.hpp"
+#include "DHT22Module.hpp"
 
 void DHT22Module::begin() {
   // Nothing to do

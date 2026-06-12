@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include "ThermistorModule.hpp"
+#include "MQ3Module.hpp"
 
 void MQ3Module::begin() {
   // Nothing to do
