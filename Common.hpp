@@ -3,4 +3,6 @@
 
 typedef int pin_t;
 
+#define INVALID_PIN 0xFFFF
+
 #endif

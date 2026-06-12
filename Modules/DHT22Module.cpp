@@ -29,5 +29,4 @@ void DHT22Module::onMessage(Message m) {
         break;
       }
   }
-  // Nothing to handle
 }

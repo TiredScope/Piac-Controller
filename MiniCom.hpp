@@ -84,6 +84,11 @@ enum class MessageType : uint16_t {
   // DHT22Module
   M_DHT22_SET_REPORTING_DELAY = 0x0D00,
   M_DHT22_VALUES = 0x0D01,
+
+  // MQ3Module
+  M_MQ3_SET_REPORTING_DELAY = 0x0E00,
+  M_MQ3_VALUES = 0x0E01,
+  M_MQ3_STATE_CHANGED = 0x0E02,
 };
 
 class Message;
