@@ -17,7 +17,8 @@
 //#include "Modules/CircuitPlaygroundModule.hpp"
 //#include "Modules/DHT22Module.hpp"
 //#include "Modules/MQ3Module.hpp"
-#include "Modules/SparkfunKeypadModule.hpp"
+//#include "Modules/SparkfunKeypadModule.hpp"
+#include "Modules/NeoPixelModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -56,15 +57,19 @@ NunchukModule nunchuk;*/
 //pin_t mq3DPin = 13, mq3APin = A0;
 //MQ3Module mq3(mq3DPin, mq3APin);
 
-const uint8_t rows = 4;
-const uint8_t cols = 3;
-const char *keymap = "123456789*0#";
-uint8_t rowPins[rows] = {3, 8, 7, 5};
-uint8_t colPins[cols] = {4, 2, 6};
-SparkfunKeypadModule keypad(keymap, rowPins, colPins, rows, cols);
+//const uint8_t rows = 4;
+//const uint8_t cols = 3;
+//const char *keymap = "123456789*0#";
+//uint8_t rowPins[rows] = {3, 8, 7, 5};
+//uint8_t colPins[cols] = {4, 2, 6};
+//SparkfunKeypadModule keypad(keymap, rowPins, colPins, rows, cols);
+
+uint16_t ledCount = 10;
+pin_t neoPixelDPin = 2; 
+NeoPixelModule neoPixel(ledCount, neoPixelDPin);
 
 void setup() {
-  MiniCom::begin(115200);
+  MiniCom::begin(9600);
   MiniCom::debug = true;
 
   //ModuleRegistry::add(&lcd);
@@ -81,7 +86,8 @@ void setup() {
   //ModuleRegistry::add(&circuitPlayground);
   //ModuleRegistry::add(&dht22);
   //ModuleRegistry::add(&mq3);
-  ModuleRegistry::add(&keypad);
+  //ModuleRegistry::add(&keypad);
+  ModuleRegistry::add(&neoPixel);
 
   ModuleRegistry::begin();
 
