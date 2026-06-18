@@ -35,8 +35,7 @@ void NeoPixelModule::onMessage(Message m) {
           i++;
         }
 
-        //pixels.show();
-        MiniCom::debugPrint("DONE");
+        pixels.show();
 
         break;
       }

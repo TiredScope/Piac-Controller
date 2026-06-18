@@ -64,12 +64,12 @@ NunchukModule nunchuk;*/
 //uint8_t colPins[cols] = {4, 2, 6};
 //SparkfunKeypadModule keypad(keymap, rowPins, colPins, rows, cols);
 
-uint16_t ledCount = 10;
+uint16_t ledCount = 60;
 pin_t neoPixelDPin = 2; 
 NeoPixelModule neoPixel(ledCount, neoPixelDPin);
 
 void setup() {
-  MiniCom::begin(9600);
+  MiniCom::begin(115200);
   MiniCom::debug = true;
 
   //ModuleRegistry::add(&lcd);
