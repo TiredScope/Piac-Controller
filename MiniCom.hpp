@@ -96,6 +96,10 @@ enum class MessageType : uint16_t {
   // NeoPixelModule
   M_NEOPIXEL_SET_BRIGHTNESS = 0x1000,
   M_NEOPIXEL_SET_COLORS = 0x1001,
+
+  // BME280Module
+  M_BME280_SET_REPORTING_DELAY = 0x1100,
+  M_BME280_VALUES = 0x1101,
 };
 
 class Message;
