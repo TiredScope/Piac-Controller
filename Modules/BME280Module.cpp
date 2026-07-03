@@ -20,18 +20,6 @@ void BME280Module::update() {
   float humidity = NAN;
   float pressure = NAN;
 
-  switch(bme280.chipModel())
-   {
-      case BME280::ChipModel_BME280:
-        MiniCom::debugPrint("Found BME280 sensor! Success.");
-        break;
-      case BME280::ChipModel_BMP280:
-        MiniCom::debugPrint("Found BMP280 sensor! No Humidity available.");
-        break;
-      default:
-        MiniCom::debugPrint("Found UNKNOWN sensor! Error!");
-   }
-
   bme280.read(pressure, temperature, humidity, BME280::TempUnit_Celsius, BME280::PresUnit_hPa);
 
   MessageBuilder::reset(MessageType::M_BME280_VALUES, getDiscriminator());
@@ -44,7 +32,7 @@ void BME280Module::update() {
 }
 
 void BME280Module::onMessage(Message m) {
-  size_t idx;
+  size_t idx = 0;
 
   switch (m.getType()) {
     case MessageType::M_BME280_SET_REPORTING_DELAY:
