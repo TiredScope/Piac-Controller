@@ -19,7 +19,8 @@
 //#include "Modules/MQ3Module.hpp"
 //#include "Modules/SparkfunKeypadModule.hpp"
 //#include "Modules/NeoPixelModule.hpp"
-#include "Modules/BME280Module.hpp"
+//#include "Modules/BME280Module.hpp"
+#include "Modules/MPU6050Module.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -66,10 +67,12 @@ NunchukModule nunchuk;*/
 //SparkfunKeypadModule keypad(keymap, rowPins, colPins, rows, cols);
 
 //uint16_t ledCount = 60;
-//pin_t neoPixelDPin = 2; 
+//pin_t neoPixelDPin = 2;
 //NeoPixelModule neoPixel(ledCount, neoPixelDPin);
 
-BME280Module bme280(10);
+//BME280Module bme280(10);
+
+MPU6050Module mpu6050;
 
 void setup() {
   MiniCom::begin(115200);
@@ -91,7 +94,8 @@ void setup() {
   //ModuleRegistry::add(&mq3);
   //ModuleRegistry::add(&keypad);
   //ModuleRegistry::add(&neoPixel);
-  ModuleRegistry::add(&bme280);
+  //ModuleRegistry::add(&bme280);
+  ModuleRegistry::add(&mpu6050);
 
   ModuleRegistry::begin();
 
