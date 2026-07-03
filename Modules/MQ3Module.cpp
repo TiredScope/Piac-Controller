@@ -34,7 +34,7 @@ void MQ3Module::update() {
 }
 
 void MQ3Module::onMessage(Message m) {
-  size_t idx;
+  size_t idx = 0;
 
   switch (m.getType()) {
     case MessageType::M_MQ3_SET_REPORTING_DELAY:

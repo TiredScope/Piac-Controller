@@ -19,7 +19,7 @@ void DHT22Module::update() {
 }
 
 void DHT22Module::onMessage(Message m) {
-  size_t idx;
+  size_t idx = 0;
 
   switch (m.getType()) {
     case MessageType::M_DHT22_SET_REPORTING_DELAY:
