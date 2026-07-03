@@ -80,8 +80,7 @@ void MPU6050Module::onMessage(Message m) {
         int16_t yGyroOffset = mpu6050.getYGyroOffset();
         int16_t zGyroOffset = mpu6050.getZGyroOffset();
 
-        Serial.print('\n');
-        MiniCom::debugPrintf("Calibration done: %d %d %d", xAccelOffset, yAccelOffset, zAccelOffset);
+        Serial.print('\n'); // Because MPU6050 vomits some stuff via serial
 
         MessageBuilder::reset(MessageType::M_MPU6050_SET_CALIBRATION_VALUES, getDiscriminator());
 
