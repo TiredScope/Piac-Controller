@@ -5,15 +5,16 @@
 #include "../Module.hpp"
 #include "../Common.hpp"
 
-#define LIGHTSENSOR_SEND_DELAY 100
+#define LIGHTSENSOR_DEFAULT_REPORTING_DELAY 500
 
 class LightSensorModule : public Module {
 private:
   pin_t sPin;
+  uint32_t reportingDelay;
   unsigned long lastSent;
 public:
   LightSensorModule(pin_t sPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
-    : Module(discriminator), sPin(sPin){};
+    : Module(discriminator), sPin(sPin), reportingDelay(LIGHTSENSOR_DEFAULT_REPORTING_DELAY){};
 
   virtual const char *getId() const override {
     return "light_sensor";

@@ -7,7 +7,7 @@ void LightSensorModule::begin() {
 
 void LightSensorModule::update() {
   unsigned long now = millis();
-  if (now - lastSent < LIGHTSENSOR_SEND_DELAY) return;
+  if (now - lastSent < reportingDelay) return;
   lastSent = now;
 
   MessageBuilder::reset(MessageType::M_LIGHTSENSOR_VALUE, getDiscriminator());
@@ -18,6 +18,15 @@ void LightSensorModule::update() {
   MiniCom::send(MessageBuilder::build());
 }
 
-void LightSensorModule::onMessage(Message) {
-  // Nothing to handle
+void LightSensorModule::onMessage(Message m) {
+  size_t idx = 0;
+
+  switch (m.getType()) {
+    case MessageType::M_LIGHTSENSOR_SET_REPORTING_DELAY:
+      {
+        uint32_t delay = m.getU32(idx);
+        reportingDelay = delay;
+        break;
+      }
+  }
 }
