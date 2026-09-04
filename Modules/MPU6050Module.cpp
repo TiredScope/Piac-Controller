@@ -5,7 +5,6 @@
 #include <Wire.h>
 
 void MPU6050Module::begin() {
-  // Nothing to do
   Wire.begin();
 
   mpu6050.initialize(ACCEL_FS::A8G, GYRO_FS::G2000DPS);
