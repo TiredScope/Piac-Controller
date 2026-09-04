@@ -24,7 +24,8 @@
 //#include "Modules/PressureSensorModule.hpp"
 //#include "Modules/PotentiometerModule.hpp"
 //#include "Modules/MAX4466Module.hpp"
-#include "Modules/SCD41Module.hpp"
+//#include "Modules/SCD41Module.hpp"
+#include "Modules/LIS3DHModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -86,7 +87,9 @@ NunchukModule nunchuk;*/
 
 //MAX4466Module max4466(A0);
 
-SCD41Module scd41;
+//SCD41Module scd41;
+
+LIS3DHModule lis3dh;
 
 void setup() {
   MiniCom::begin(115200);
@@ -114,7 +117,8 @@ void setup() {
   //ModuleRegistry::add(&potentiometer);
   //ModuleRegistry::add(&lightSensor);
   //ModuleRegistry::add(&max4466);
-  ModuleRegistry::add(&scd41);
+  //ModuleRegistry::add(&scd41);
+  ModuleRegistry::add(&lis3dh);
 
   ModuleRegistry::begin();
 
