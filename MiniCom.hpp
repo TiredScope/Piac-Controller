@@ -116,6 +116,10 @@ enum class MessageType : uint16_t {
   // PotentiometerModule
   M_POTENTIOMETER_SET_REPORTING_DELAY = 0x1400,
   M_POTENTIOMETER_VALUE = 0x1401,
+
+  // MAX4466Module
+  M_MAX4466_SET_REPORTING_DELAY = 0x1500,
+  M_MAX4466_VALUE = 0x1501,
 };
 
 class Message;
