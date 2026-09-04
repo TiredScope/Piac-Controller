@@ -4,7 +4,7 @@
 #include "Arduino.h"
 #include "../Module.hpp"
 #include "../Common.hpp"
-#include "../HC-SR04/SR04.h"
+#include "../src/HC-SR04/SR04.h"
 
 #define ULTRASONICSENSOR_SEND_DELAY 100
 

@@ -18,9 +18,11 @@
 //#include "Modules/DHT22Module.hpp"
 //#include "Modules/MQ3Module.hpp"
 //#include "Modules/SparkfunKeypadModule.hpp"
-//#include "Modules/NeoPixelModule.hpp"
+#include "Modules/NeoPixelModule.hpp"
 //#include "Modules/BME280Module.hpp"
-#include "Modules/MPU6050Module.hpp"
+//#include "Modules/MPU6050Module.hpp"
+//#include "Modules/PressureSensorModule.hpp"
+//#include "Modules/PotentiometerModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -37,13 +39,13 @@ NunchukModule nunchuk;*/
 //static const pin_t hearbeatPin = A0;
 //PulseSensorModule pulseSensor(hearbeatPin, 550 /* threshold */);
 
-//static const pin_t pirPin = 2;
+//static const pin_t pirPin = 5;
 //PIRSensorModule pirSensor(pirPin);
 
-//static const pin_t echoPin = 11, trigPin = 12;
+//static const pin_t echoPin = 3, trigPin = 2;
 //UltrasonicSensorModule ultrasonicSensor(echoPin, trigPin);
 
-//static const pin_t lightSensorPin = A0;
+//static const pin_t lightSensorPin = A2;
 //LightSensorModule lightSensor(lightSensorPin);
 
 //static const pin_t irRecvPin = 11;
@@ -54,7 +56,7 @@ NunchukModule nunchuk;*/
 
 //CircuitPlaygroundModule circuitPlayground;
 
-//DHT22Module dht22(2);
+//DHT22Module dht22(4);
 
 //pin_t mq3DPin = 13, mq3APin = A0;
 //MQ3Module mq3(mq3DPin, mq3APin);
@@ -66,13 +68,19 @@ NunchukModule nunchuk;*/
 //uint8_t colPins[cols] = {4, 2, 6};
 //SparkfunKeypadModule keypad(keymap, rowPins, colPins, rows, cols);
 
-//uint16_t ledCount = 60;
-//pin_t neoPixelDPin = 2;
-//NeoPixelModule neoPixel(ledCount, neoPixelDPin);
+uint16_t ledCount = 30;
+pin_t neoPixelDPin = 2;
+NeoPixelModule neoPixel(ledCount, neoPixelDPin);
 
 //BME280Module bme280(10);
 
-MPU6050Module mpu6050;
+//MPU6050Module mpu6050;
+
+//static const pin_t pressureSensorSPin = A0;
+//PressureSensorModule pressureSensor(pressureSensorSPin);
+
+//static const pin_t potentiometerSPin = A1;
+//PotentiometerModule potentiometer(potentiometerSPin);
 
 void setup() {
   MiniCom::begin(115200);
@@ -93,9 +101,12 @@ void setup() {
   //ModuleRegistry::add(&dht22);
   //ModuleRegistry::add(&mq3);
   //ModuleRegistry::add(&keypad);
-  //ModuleRegistry::add(&neoPixel);
+  ModuleRegistry::add(&neoPixel);
   //ModuleRegistry::add(&bme280);
-  ModuleRegistry::add(&mpu6050);
+  //ModuleRegistry::add(&mpu6050);
+  //ModuleRegistry::add(&pressureSensor);
+  //ModuleRegistry::add(&potentiometer);
+  //ModuleRegistry::add(&lightSensor);
 
   ModuleRegistry::begin();
 
