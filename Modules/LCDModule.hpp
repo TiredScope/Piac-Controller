@@ -1,10 +1,10 @@
-#include "LiquidCrystal.h"
 #ifndef _LCDMODULE_H_
 #define _LCDMODULE_H_
 
-#include "Arduino.h"
-#include "Module.hpp"
-#include "Common.hpp"
+#include <LiquidCrystal.h>
+#include <Arduino.h>
+#include "../Module.hpp"
+#include "../Common.hpp"
 
 // LCD config flags
 #define LCD_CURSOR 0x01
@@ -17,8 +17,8 @@ class LCDModule : public Module {
 private:
   LiquidCrystal lcd;
 public:
-  LCDModule(pin_t rs, pin_t en, pin_t d4, pin_t d5, pin_t d6, pin_t d7)
-    : lcd(rs, en, d4, d5, d6, d7){};
+  LCDModule(pin_t rs, pin_t en, pin_t d4, pin_t d5, pin_t d6, pin_t d7, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), lcd(rs, en, d4, d5, d6, d7){};
 
   virtual const char *getId() const override {
     return "lcd";
@@ -28,5 +28,9 @@ public:
   virtual void update() override;
   virtual void onMessage(Message m) override;
 };
+
+#ifdef INCLUDE_IMPLEMENTATION
+#include "LCDModule.cpp"
+#endif
 
 #endif

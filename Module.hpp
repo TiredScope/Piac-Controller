@@ -13,6 +13,9 @@ private:
   bool enabled = true;
   uint8_t discriminator = DEFAULT_DISCRIMINATOR;
 public:
+  Module(uint8_t discriminator)
+    : discriminator(discriminator) {}
+
   void setEnabled(bool enabled) {
     this->enabled = enabled;
   }

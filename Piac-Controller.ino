@@ -1,12 +1,33 @@
 #include "Arduino.h"
 #include "Module.hpp"
 #include "Common.hpp"
-#include "LCDModule.hpp"
-#include "JoystickModule.hpp"
-#include "LEDMatrixModule.hpp"
-#include "NunchukModule.hpp"
-#include "RFIDModule.hpp"
-#include <SPI.h>
+
+#define INCLUDE_IMPLEMENTATION  // Because the modules are (effectively) header-only libraries: The .cpp file is included when the define is present
+//#include "Modules/LCDModule.hpp"
+//#include "Modules/JoystickModule.hpp"
+//#include "Modules/LEDMatrixModule.hpp"
+//#include "Modules/NunchukModule.hpp"
+//#include "Modules/RFIDModule.hpp"
+//#include "Modules/PulseSensorModule.hpp"
+//#include "Modules/PIRSensorModule.hpp"
+//#include "Modules/UltrasonicSensorModule.hpp"
+//#include "Modules/LightSensorModule.hpp"
+//#include "Modules/IRReceiverModule.hpp"
+//#include "Modules/ThermistorModule.hpp"
+//#include "Modules/CircuitPlaygroundModule.hpp"
+//#include "Modules/DHT22Module.hpp"
+//#include "Modules/MQ3Module.hpp"
+//#include "Modules/SparkfunKeypadModule.hpp"
+//#include "Modules/NeoPixelModule.hpp"
+//#include "Modules/BME280Module.hpp"
+//#include "Modules/MPU6050Module.hpp"
+//#include "Modules/PressureSensorModule.hpp"
+//#include "Modules/PotentiometerModule.hpp"
+//#include "Modules/MAX4466Module.hpp"
+//#include "Modules/SCD41Module.hpp"
+//#include "Modules/LIS3DHModule.hpp"
+//#include "Modules/BMP280Module.hpp"
+#include "Modules/DS3231Module.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -17,31 +38,95 @@ LEDMatrixModule ledMatrix(dInPin, clkPin, csPin);
 
 NunchukModule nunchuk;*/
 
-static const pin_t ssPin = 53, rstPin = 5;
-RFIDModule rfid(ssPin, rstPin);
+//static const pin_t ssPin = 53, rstPin = 5;
+//RFIDModule rfid(ssPin, rstPin);
+
+//static const pin_t hearbeatPin = A0;
+//PulseSensorModule pulseSensor(hearbeatPin, 550 /* threshold */);
+
+//static const pin_t pirPin = 5;
+//PIRSensorModule pirSensor(pirPin);
+
+//static const pin_t echoPin = 3, trigPin = 2;
+//UltrasonicSensorModule ultrasonicSensor(echoPin, trigPin);
+
+//static const pin_t lightSensorPin = A2;
+//LightSensorModule lightSensor(lightSensorPin);
+
+//static const pin_t irRecvPin = 11;
+//IRReceiverModule irReceiver(irRecvPin);
+
+//static const pin_t thermistorPin = A0;
+//ThermistorModule thermistor(thermistorPin);
+
+//CircuitPlaygroundModule circuitPlayground;
+
+//DHT22Module dht22(4);
+
+//pin_t mq3DPin = 13, mq3APin = A0;
+//MQ3Module mq3(mq3DPin, mq3APin);
+
+//const uint8_t rows = 4;
+//const uint8_t cols = 3;
+//const char *keymap = "123456789*0#";
+//uint8_t rowPins[rows] = {3, 8, 7, 5};
+//uint8_t colPins[cols] = {4, 2, 6};
+//SparkfunKeypadModule keypad(keymap, rowPins, colPins, rows, cols);
+
+//uint16_t ledCount = 30;
+//pin_t neoPixelDPin = 2;
+//NeoPixelModule neoPixel(ledCount, neoPixelDPin);
+
+//BME280Module bme280(10);
+
+//MPU6050Module mpu6050;
+
+//static const pin_t pressureSensorSPin = A0;
+//PressureSensorModule pressureSensor(pressureSensorSPin);
+
+//static const pin_t potentiometerSPin = A1;
+//PotentiometerModule potentiometer(potentiometerSPin);
+
+//MAX4466Module max4466(A0);
+
+//SCD41Module scd41;
+
+//LIS3DHModule lis3dh;
+
+//BMP280Module bmp280;
+
+DS3231Module ds3231;
 
 void setup() {
   MiniCom::begin(115200);
   MiniCom::debug = true;
-  SPI.begin();
-
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
-
-  /*pinMode(rs, OUTPUT);
-  pinMode(en, OUTPUT);
-  pinMode(d4, OUTPUT);
-  pinMode(d5, OUTPUT);
-  pinMode(d6, OUTPUT);
-  pinMode(d7, OUTPUT);*/
 
   //ModuleRegistry::add(&lcd);
   //ModuleRegistry::add(&joystick);
-  //joystick.setEnabled(false);
   //ModuleRegistry::add(&ledMatrix);
   //ModuleRegistry::add(&nunchuk);
-  rfid.setDiscriminator(42);
-  ModuleRegistry::add(&rfid);
+  //ModuleRegistry::add(&rfid);
+  //ModuleRegistry::add(&pulseSensor);
+  //ModuleRegistry::add(&pirSensor);
+  //ModuleRegistry::add(&ultrasonicSensor);
+  //ModuleRegistry::add(&lightSensor);
+  //ModuleRegistry::add(&irReceiver);
+  //ModuleRegistry::add(&thermistor);
+  //ModuleRegistry::add(&circuitPlayground);
+  //ModuleRegistry::add(&dht22);
+  //ModuleRegistry::add(&mq3);
+  //ModuleRegistry::add(&keypad);
+  //ModuleRegistry::add(&neoPixel);
+  //ModuleRegistry::add(&bme280);
+  //ModuleRegistry::add(&mpu6050);
+  //ModuleRegistry::add(&pressureSensor);
+  //ModuleRegistry::add(&potentiometer);
+  //ModuleRegistry::add(&lightSensor);
+  //ModuleRegistry::add(&max4466);
+  //ModuleRegistry::add(&scd41);
+  //ModuleRegistry::add(&lis3dh);
+  //ModuleRegistry::add(&bmp280);
+  ModuleRegistry::add(&ds3231);
 
   ModuleRegistry::begin();
 
