@@ -27,7 +27,8 @@
 //#include "Modules/SCD41Module.hpp"
 //#include "Modules/LIS3DHModule.hpp"
 //#include "Modules/BMP280Module.hpp"
-#include "Modules/DS3231Module.hpp"
+//#include "Modules/DS3231Module.hpp"
+#include "Modules/DFPlayerModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -95,11 +96,16 @@ NunchukModule nunchuk;*/
 
 //BMP280Module bmp280;
 
-DS3231Module ds3231;
+//DS3231Module ds3231;
+
+DFPlayerModule dfPlayer(&Serial1);
 
 void setup() {
   MiniCom::begin(115200);
   MiniCom::debug = true;
+
+  // For DFPlayer
+  Serial1.begin(9600, SERIAL_8N1);
 
   //ModuleRegistry::add(&lcd);
   //ModuleRegistry::add(&joystick);
@@ -126,7 +132,8 @@ void setup() {
   //ModuleRegistry::add(&scd41);
   //ModuleRegistry::add(&lis3dh);
   //ModuleRegistry::add(&bmp280);
-  ModuleRegistry::add(&ds3231);
+  //ModuleRegistry::add(&ds3231);
+  ModuleRegistry::add(&dfPlayer);
 
   ModuleRegistry::begin();
 
