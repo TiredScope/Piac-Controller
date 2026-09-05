@@ -26,7 +26,8 @@
 //#include "Modules/MAX4466Module.hpp"
 //#include "Modules/SCD41Module.hpp"
 //#include "Modules/LIS3DHModule.hpp"
-#include "Modules/BMP280Module.hpp"
+//#include "Modules/BMP280Module.hpp"
+#include "Modules/DS3231Module.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -92,7 +93,9 @@ NunchukModule nunchuk;*/
 
 //LIS3DHModule lis3dh;
 
-BMP280Module bmp280;
+//BMP280Module bmp280;
+
+DS3231Module ds3231;
 
 void setup() {
   MiniCom::begin(115200);
@@ -122,7 +125,8 @@ void setup() {
   //ModuleRegistry::add(&max4466);
   //ModuleRegistry::add(&scd41);
   //ModuleRegistry::add(&lis3dh);
-  ModuleRegistry::add(&bmp280);
+  //ModuleRegistry::add(&bmp280);
+  ModuleRegistry::add(&ds3231);
 
   ModuleRegistry::begin();
 

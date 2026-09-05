@@ -1,4 +1,3 @@
-#include "Adafruit_Sensor.h"
 #include "Arduino.h"
 #include "BMP280Module.hpp"
 
