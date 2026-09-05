@@ -1,3 +1,4 @@
+#include "Adafruit_LIS3DH.h"
 #include "Arduino.h"
 #include "LIS3DHModule.hpp"
 
@@ -21,7 +22,7 @@ void LIS3DHModule::update() {
   sensors_event_t event;
   lis.getEvent(&event);
 
-  MessageBuilder::reset(MessageType::M_MPU6050_VALUES, getDiscriminator());
+  MessageBuilder::reset(MessageType::M_LIS3DH_VALUES, getDiscriminator());
 
   MessageBuilder::putF32(event.acceleration.x);
   MessageBuilder::putF32(event.acceleration.y);
@@ -46,9 +47,13 @@ void LIS3DHModule::onMessage(Message m) {
         uint8_t performanceMode = m.getU8(idx);
         uint8_t range = m.getU8(idx);
 
-        lis.setDataRate(dataRate);
-        lis.setPerformanceMode(performanceMode);
-        lis.setRange(range);
+        lis.setDataRate((lis3dh_dataRate_t)dataRate);
+        lis.setPerformanceMode((lis3dh_mode_t)performanceMode);
+        lis.setRange((lis3dh_range_t)range);
+        break;
+      }
+    default:
+      {
         break;
       }
   }
