@@ -1,5 +1,5 @@
-#ifndef _THERMISTORMODULE_H_
-#define _THERMISTORMODULE_H_
+#ifndef _DS3231MODULE_H_
+#define _DS3231MODULE_H_
 
 #include "Arduino.h"
 #include "../Module.hpp"

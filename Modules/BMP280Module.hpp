@@ -1,5 +1,5 @@
-#ifndef _THERMISTORMODULE_H_
-#define _THERMISTORMODULE_H_
+#ifndef _BMP280MODULE_H_
+#define _BMP280MODULE_H_
 
 #include "Arduino.h"
 #include "../Module.hpp"

@@ -1,5 +1,5 @@
-#ifndef _THERMISTORMODULE_H_
-#define _THERMISTORMODULE_H_
+#ifndef _MPU6050MODULE_H_
+#define _MPU6050MODULE_H_
 
 #include "Arduino.h"
 #include "../Module.hpp"
