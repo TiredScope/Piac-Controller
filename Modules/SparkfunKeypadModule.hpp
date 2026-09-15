@@ -1,5 +1,5 @@
-#ifndef _THERMISTORMODULE_H_
-#define _THERMISTORMODULE_H_
+#ifndef _SPARKFUNKEYPADMODULE_H_
+#define _SPARKFUNKEYPADMODULE_H_
 
 #include "Arduino.h"
 #include "../Module.hpp"

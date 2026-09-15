@@ -1,5 +1,5 @@
-#ifndef _THERMISTORMODULE_H_
-#define _THERMISTORMODULE_H_
+#ifndef _DHT22MODULE_H_
+#define _DHT22MODULE_H_
 
 #include "Arduino.h"
 #include "../Module.hpp"

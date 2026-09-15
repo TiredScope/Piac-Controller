@@ -1,5 +1,5 @@
-#ifndef _LEDMATRIXMODULE_H_
-#define _LEDMATRIXMODULE_H_
+#ifndef _NEOPIXELMODULE_H_
+#define _NEOPIXELMODULE_H_
 
 #include "Arduino.h"
 #include "../Module.hpp"

@@ -1,4 +1,3 @@
-#include "SPI.h"
 #ifndef _RFIDMODULE_H_
 #define _RFIDMODULE_H_
 

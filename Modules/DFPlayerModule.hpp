@@ -1,5 +1,5 @@
-#ifndef _THERMISTORMODULE_H_
-#define _THERMISTORMODULE_H_
+#ifndef _DFPLAYERMODULE_H_
+#define _DFPLAYERMODULE_H_
 
 #include "Arduino.h"
 #include "../Module.hpp"
