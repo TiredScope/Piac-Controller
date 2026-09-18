@@ -10,6 +10,14 @@ void DHT22Module::update() {
   if (now - lastSent < reportingDelay) return;
   lastSent = now;
 
+  float temperature = dht22.getTemperature();
+  float humidity = dht22.getHumidity();
+
+  if(dht22.getLastError() != dht22.OK) {
+    MiniCom::debugPrintf("[DHT22] Got error: %d", dht22.getLastError());
+    return;
+  }
+
   MessageBuilder::reset(MessageType::M_DHT22_VALUES, getDiscriminator());
 
   MessageBuilder::putF32(dht22.getTemperature());

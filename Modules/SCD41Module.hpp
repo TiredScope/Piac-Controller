@@ -1,5 +1,5 @@
 #ifndef _SCD41MODULE_H_
-#define _SCD41HMODULE_H_
+#define _SCD41MODULE_H_
 
 #include "Arduino.h"
 #include "../Module.hpp"
