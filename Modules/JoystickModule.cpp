@@ -1,8 +1,8 @@
 #include "Arduino.h"
 #include "JoystickModule.hpp"
-#include "MiniCom.hpp"
 
 void JoystickModule::begin() {
+  pinMode(swPin, INPUT);
 }
 
 void JoystickModule::update() {

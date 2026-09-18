@@ -16,12 +16,12 @@ void ModuleRegistry::handleMessage(Message m) {
         const char *name = m.getString(idx);
         Module *module = ModuleRegistry::find(name, m.getDiscriminator());
         if (module == nullptr) {
-          MiniCom::debugPrintf("Failed to disable module (%s @ %d), not found", name, m.getDiscriminator());
+          MiniCom::debugPrintf("[Module] Failed to disable module (%s @ %d), not found", name, m.getDiscriminator());
           return;
         }
         bool enable = m.getU8(idx) != 0;
         module->setEnabled(enable);
-        MiniCom::debugPrintf("Module (%s @ %d) is now %s", name, module->getDiscriminator(), enable ? "enabled" : "disabled");
+        MiniCom::debugPrintf("[Module] Module (%s @ %d) is now %s", name, module->getDiscriminator(), enable ? "enabled" : "disabled");
         return;
       }
     default: break;
@@ -29,7 +29,7 @@ void ModuleRegistry::handleMessage(Message m) {
 
   for (Module *module : modules) {
     if (!module || !module->isEnabled()) continue;
-    if(m.getDiscriminator() != DEFAULT_DISCRIMINATOR && module->getDiscriminator() != m.getDiscriminator()) continue;
+    if (m.getDiscriminator() != DEFAULT_DISCRIMINATOR && module->getDiscriminator() != m.getDiscriminator()) continue;
     module->onMessage(m);
   }
 }
@@ -71,6 +71,7 @@ void ModuleRegistry::sendCapabilities() {
     if (!module) continue;
     MessageBuilder::putString(module->getId());
     MessageBuilder::putU8(module->getDiscriminator());
+    MessageBuilder::putU8(module->isEnabled() ? 1 : 0);
   }
 
   MiniCom::send(MessageBuilder::build());

@@ -1,6 +1,5 @@
 #include "Arduino.h"
 #include "NunchukModule.hpp"
-#include "MiniCom.hpp"
 
 void NunchukModule::begin() {
   nunchuk.begin();

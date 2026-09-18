@@ -1,6 +1,5 @@
 #include "Arduino.h"
 #include "LEDMatrixModule.hpp"
-#include "MiniCom.hpp"
 
 void LEDMatrixModule::begin() {
 }
