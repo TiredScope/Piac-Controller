@@ -5,19 +5,18 @@
 #include "../Module.hpp"
 #include "../Common.hpp"
 
-#include <BME280Spi.h>
+#include <BME280I2C.h>
 
 #define BME280_DEFAULT_REPORTING_DELAY 1000
 
 class BME280Module : public Module {
 private:
-  BME280Spi::Settings settings;
-  BME280Spi bme280;
+  BME280I2C bme280;
   uint32_t reportingDelay;
   unsigned long lastSent;
 public:
-  BME280Module(pin_t sPin, uint8_t discriminator = DEFAULT_DISCRIMINATOR)
-    : Module(discriminator), settings(sPin), bme280(settings), reportingDelay(BME280_DEFAULT_REPORTING_DELAY){};
+  BME280Module(uint8_t discriminator = DEFAULT_DISCRIMINATOR)
+    : Module(discriminator), reportingDelay(BME280_DEFAULT_REPORTING_DELAY){};
 
   virtual const char *getId() const override {
     return "bme280";

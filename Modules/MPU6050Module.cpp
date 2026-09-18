@@ -67,7 +67,7 @@ void MPU6050Module::onMessage(Message m) {
     case MessageType::M_MPU6050_START_CALIBRATION:
       {
         uint8_t loops = m.getU8(idx);
-        MiniCom::debugPrintf("Starting calibration with %d loops", loops);
+        MiniCom::debugPrintf("[MPU6050] Starting calibration with %d loops", loops);
         mpu6050.CalibrateAccel(loops);
         mpu6050.CalibrateGyro(loops);
 

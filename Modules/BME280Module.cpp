@@ -1,10 +1,10 @@
 #include "Arduino.h"
 #include "BME280Module.hpp"
 
-#include <SPI.h>
+#include <Wire.h>
 
 void BME280Module::begin() {
-  SPI.begin();
+  Wire.begin();
 
   if (!bme280.begin()) {
     MiniCom::debugPrint("Failed to initialize BME280");
