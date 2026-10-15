@@ -2,6 +2,7 @@
 
 #include <Arduino.h>
 #include <string.h>
+#include <stdarg.h>
 
 #define FLOAT_BYTES (sizeof(float) / sizeof(uint8_t))
 

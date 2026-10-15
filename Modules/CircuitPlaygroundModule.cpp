@@ -45,7 +45,7 @@ void CircuitPlaygroundModule::update() {
     MessageBuilder::putU8(capacitiveTouchPins);
 
     // TODO: Currently, we do not allow setting numSamples and just use the default of 10
-    for (uint8_t pin = 0; pin < 8; pin++) {
+    for (uint8_t pin = 0; pin < 7; pin++) {
       if (!(capacitiveTouchPins & (1 << pin))) {
         continue;
       }

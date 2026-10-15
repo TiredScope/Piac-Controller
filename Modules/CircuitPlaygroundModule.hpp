@@ -20,7 +20,8 @@ enum class CircuitPlaygroundComponent : uint8_t {
 
 #define CIRCUITPLAYGROUND_COMPONENT_FLAG(component) (1 << (uint8_t)(component))
 
-const uint8_t CIRCUITPLAYGROUND_CAPACITIVE_TOUCH_PINS[8] = { 0, 1, 2, 3, 6, 9, 10, 12 };
+//const uint8_t CIRCUITPLAYGROUND_CAPACITIVE_TOUCH_PINS[8] = { 0, 1, 2, 3, 6, 9, 10, 12 };
+const uint8_t CIRCUITPLAYGROUND_CAPACITIVE_TOUCH_PINS[7] = { A1, A2, A3, A4, A5, A6, A7 };
 
 class CircuitPlaygroundModule : public Module {
 private:

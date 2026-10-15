@@ -11,24 +11,24 @@
 //#include "Modules/PulseSensorModule.hpp"
 //#include "Modules/PIRSensorModule.hpp"
 //#include "Modules/UltrasonicSensorModule.hpp"
-//#include "Modules/LightSensorModule.hpp"
+#include "Modules/LightSensorModule.hpp"
 //#include "Modules/IRReceiverModule.hpp"
 //#include "Modules/ThermistorModule.hpp"
 //#include "Modules/CircuitPlaygroundModule.hpp"
 //#include "Modules/DHT22Module.hpp"
 //#include "Modules/MQ3Module.hpp"
-//#include "Modules/SparkfunKeypadModule.hpp"
+#include "Modules/SparkfunKeypadModule.hpp"
 //#include "Modules/NeoPixelModule.hpp"
 //#include "Modules/BME280Module.hpp"
 //#include "Modules/MPU6050Module.hpp"
-//#include "Modules/PressureSensorModule.hpp"
-//#include "Modules/PotentiometerModule.hpp"
+#include "Modules/PressureSensorModule.hpp"
+#include "Modules/PotentiometerModule.hpp"
 //#include "Modules/MAX4466Module.hpp"
 //#include "Modules/SCD41Module.hpp"
 //#include "Modules/LIS3DHModule.hpp"
 //#include "Modules/BMP280Module.hpp"
 //#include "Modules/DS3231Module.hpp"
-#include "Modules/DFPlayerModule.hpp"
+//#include "Modules/DFPlayerModule.hpp"
 
 /*static const pin_t rs = 7, en = 8, d4 = 9, d5 = 10, d6 = 11, d7 = 12;
 LCDModule lcd(rs, en, d4, d5, d6, d7);
@@ -51,9 +51,6 @@ NunchukModule nunchuk;*/
 //static const pin_t echoPin = 3, trigPin = 2;
 //UltrasonicSensorModule ultrasonicSensor(echoPin, trigPin);
 
-//static const pin_t lightSensorPin = A2;
-//LightSensorModule lightSensor(lightSensorPin);
-
 //static const pin_t irRecvPin = 11;
 //IRReceiverModule irReceiver(irRecvPin);
 
@@ -62,7 +59,8 @@ NunchukModule nunchuk;*/
 
 //CircuitPlaygroundModule circuitPlayground;
 
-//DHT22Module dht22(4);
+//DHT22Module dht22(13, 1);
+//DHT22Module dht22_2(12, 2);
 
 //pin_t mq3DPin = 13, mq3APin = A0;
 //MQ3Module mq3(mq3DPin, mq3APin);
@@ -78,15 +76,34 @@ NunchukModule nunchuk;*/
 //pin_t neoPixelDPin = 2;
 //NeoPixelModule neoPixel(ledCount, neoPixelDPin);
 
-//BME280Module bme280(10);
+//BME280Module bme280;
 
 //MPU6050Module mpu6050;
 
-//static const pin_t pressureSensorSPin = A0;
-//PressureSensorModule pressureSensor(pressureSensorSPin);
+static const pin_t pressureSensorSPin = A0;
+PressureSensorModule pressureSensor(pressureSensorSPin, 1);
 
-//static const pin_t potentiometerSPin = A1;
-//PotentiometerModule potentiometer(potentiometerSPin);
+static const pin_t potentiometerSPin = A2;
+PotentiometerModule potentiometer(potentiometerSPin, 1);
+
+static const pin_t lightSensorPin = A1;
+LightSensorModule lightSensor(lightSensorPin, 1);
+
+static const pin_t pressureSensorSPin2 = A5;
+PressureSensorModule pressureSensor2(pressureSensorSPin2, 2);
+
+static const pin_t potentiometerSPin2 = A3;
+PotentiometerModule potentiometer2(potentiometerSPin2, 2);
+
+static const pin_t lightSensorPin2 = A4;
+LightSensorModule lightSensor2(lightSensorPin2, 2);
+
+const uint8_t rows = 4;
+const uint8_t cols = 3;
+const char *keymap = "123456789*0#";
+uint8_t rowPins[rows] = {4, 5, 9, 6};
+uint8_t colPins[cols] = {7, 3, 8};
+SparkfunKeypadModule keypad(keymap, rowPins, colPins, rows, cols);
 
 //MAX4466Module max4466(A0);
 
@@ -98,14 +115,20 @@ NunchukModule nunchuk;*/
 
 //DS3231Module ds3231;
 
-DFPlayerModule dfPlayer(&Serial1);
+//DFPlayerModule dfPlayer(&Serial1);
 
 void setup() {
   MiniCom::begin(115200);
   MiniCom::debug = true;
 
+  pinMode(11, OUTPUT);
+  digitalWrite(11, HIGH);
+
+  pinMode(12, OUTPUT);
+  digitalWrite(12, HIGH);
+
   // For DFPlayer
-  Serial1.begin(9600, SERIAL_8N1);
+  //Serial1.begin(9600, SERIAL_8N1);
 
   //ModuleRegistry::add(&lcd);
   //ModuleRegistry::add(&joystick);
@@ -120,20 +143,25 @@ void setup() {
   //ModuleRegistry::add(&thermistor);
   //ModuleRegistry::add(&circuitPlayground);
   //ModuleRegistry::add(&dht22);
+  //ModuleRegistry::add(&dht22_2);
   //ModuleRegistry::add(&mq3);
   //ModuleRegistry::add(&keypad);
   //ModuleRegistry::add(&neoPixel);
   //ModuleRegistry::add(&bme280);
   //ModuleRegistry::add(&mpu6050);
-  //ModuleRegistry::add(&pressureSensor);
-  //ModuleRegistry::add(&potentiometer);
-  //ModuleRegistry::add(&lightSensor);
+  ModuleRegistry::add(&pressureSensor);
+  ModuleRegistry::add(&potentiometer);
+  ModuleRegistry::add(&lightSensor);
+  ModuleRegistry::add(&pressureSensor2);
+  ModuleRegistry::add(&potentiometer2);
+  ModuleRegistry::add(&lightSensor2);
+  ModuleRegistry::add(&keypad);
   //ModuleRegistry::add(&max4466);
   //ModuleRegistry::add(&scd41);
   //ModuleRegistry::add(&lis3dh);
   //ModuleRegistry::add(&bmp280);
   //ModuleRegistry::add(&ds3231);
-  ModuleRegistry::add(&dfPlayer);
+  //ModuleRegistry::add(&dfPlayer);
 
   ModuleRegistry::begin();
 
